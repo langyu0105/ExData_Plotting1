@@ -1,11 +1,11 @@
 #Read in Dataset
 library(lubridate)
 setwd("C:/Users/Yu/Desktop/New folder")
-power <- read.table("household_power_consumption.txt", sep=";", header=TRUE)
+power <- read.table("household_power_consumption.txt", sep=";", header=TRUE,
+                    stringsAsFactors=FALSE)
 
 #Convert to datetime format
 power$Date <- dmy(power$Date)
-power$Time <- hms(power$Time)
 
 #Only use 2-days of data
 power_sub <- subset(power, (Date=="2007-02-01" | Date=="2007-02-02"))
